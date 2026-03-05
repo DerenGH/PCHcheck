@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="50dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PCHcheck"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnCPU" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnGPU" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPU" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnRAM" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RAM" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnSSD" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SSD" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHardware"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/btnSupport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Support"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>

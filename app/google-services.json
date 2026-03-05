@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "983633710984",
+    "project_id": "pchcheck",
+    "storage_bucket": "pchcheck.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983633710984:android:b8225822f823b6671e743d",
+        "android_client_info": {
+          "package_name": "com.example.pchcheck"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3t_C2nInL8WkT9foxM42YESRyGABwi9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
