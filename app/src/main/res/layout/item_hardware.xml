@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -14,18 +15,27 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvItemName"
+            android:id="@+id/tvHardwareName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hardware Name"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#333333" />
 
         <TextView
-            android:id="@+id/tvItemDetails"
+            android:id="@+id/tvHardwarePrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price: $000 | Performance: High"
-            android:textColor="#666666" />
+            android:textSize="16sp"
+            android:textColor="#2E7D32" />
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:textStyle="italic" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

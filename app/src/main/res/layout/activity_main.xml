@@ -1,35 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="50dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:background="#F5F5F5">
+    android:background="#F5F7FA"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PCHcheck"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
-
-    <HorizontalScrollView
+    <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:scrollbars="none">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PCHcheck"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A1C1E" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/search_bg"
+            app:queryHint="Search parts (e.g. RTX 4090)"
+            app:iconifiedByDefault="false" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/filterScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button android:id="@+id/btnCPU" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" android:layout_marginEnd="8dp"/>
-            <Button android:id="@+id/btnGPU" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPU" android:layout_marginEnd="8dp"/>
-            <Button android:id="@+id/btnRAM" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RAM" android:layout_marginEnd="8dp"/>
-            <Button android:id="@+id/btnSSD" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SSD" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <EditText
+                android:id="@+id/etMinPrice"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:hint="Min $"
+                android:inputType="numberDecimal"
+                android:background="@drawable/filter_input_bg"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/etMaxPrice"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:hint="Max $"
+                android:inputType="numberDecimal"
+                android:background="@drawable/filter_input_bg"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:layout_marginEnd="16dp"/>
+
+            <CheckBox
+                android:id="@+id/cbAmazon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amazon"
+                android:checked="true"
+                android:layout_marginEnd="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cbMicroCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Micro Center"
+                android:checked="true"/>
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -37,14 +96,28 @@
         android:id="@+id/rvHardware"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="10dp" />
+        android:padding="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/filterScroll"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        tools:listitem="@layout/item_hardware" />
 
-    <Button
-        android:id="@+id/btnSupport"
+    <LinearLayout
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contact Support"
-        android:layout_marginBottom="20dp"/>
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnSupport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:backgroundTint="#FF5252"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
