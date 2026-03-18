@@ -1,46 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="32dp"
     android:gravity="center"
-    android:background="#F5F5F5">
+    android:padding="32dp"
+    android:background="#F5F7FA">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PCHcheck Login"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:textColor="#333333"
+        android:layout_marginBottom="40dp"/>
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        android:inputType="textEmailAddress"
+        android:backgroundTint="#CCCCCC"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Password"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp"/>
+        android:backgroundTint="#CCCCCC"
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Login"
-        android:layout_marginTop="24dp"/>
+        android:backgroundTint="#C5B4FF"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
 
-    <Button
-        android:id="@+id/btnRegister"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvGoToRegister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No account? Register here"
-        android:textColor="#666666"/>
+        android:text="NO ACCOUNT? REGISTER HERE"
+        android:textColor="#555555"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="8dp"/>
+
 </LinearLayout>

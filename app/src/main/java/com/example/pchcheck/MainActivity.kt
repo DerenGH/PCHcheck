@@ -1,12 +1,13 @@
 package com.example.pchcheck
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
@@ -14,13 +15,12 @@ import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
 
-    // Your dummy data - I added "Amazon" and "Micro Center" specifically
     private val allHardware = listOf(
         HardwareItem("Intel i9-13900K", "CPU", 580.0, 98, "Amazon", 0),
         HardwareItem("NVIDIA RTX 4090", "GPU", 1599.0, 99, "Amazon", 0),
         HardwareItem("Corsair Vengeance 32GB", "RAM", 120.0, 85, "Micro Center", 0),
-        HardwareItem("Samsung 990 Pro 1TB", "SSD", 110.0, 92, "Micro Center", 0),
-        HardwareItem("AMD Ryzen 7 7800X3D", "CPU", 449.0, 95, "Amazon", 0)
+        HardwareItem("Samsung 990 Pro 1TB", "SSD", 110.0, 92, "Amazon", 0),
+        HardwareItem("AMD Ryzen 7 7800X3D", "CPU", 449.0, 95, "Micro Center", 0)
     )
 
     private lateinit var adapter: HardwareAdapter
@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity() {
         val cbMicro = findViewById<CheckBox>(R.id.cbMicroCenter)
         val btnLogout = findViewById<Button>(R.id.btnSupport)
 
+        // --- THE FONT COLOR FIX ---
+        val searchText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+        searchText.setTextColor(Color.parseColor("#333333")) // Solid Gray Text
+        searchText.setHintTextColor(Color.parseColor("#888888")) // Readable Hint
+        // --------------------------
+
         // Setup RecyclerView
         adapter = HardwareAdapter(allHardware)
         rvHardware.layoutManager = LinearLayoutManager(this)
@@ -53,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                 val matchesSearch = item.name.lowercase().contains(query)
                 val matchesPrice = item.price in min..max
 
-                // Logic: If NO boxes are checked, show all. If boxes are checked, show matches.
                 val noStoreSelected = !cbAmazon.isChecked && !cbMicro.isChecked
                 val matchesStore = noStoreSelected ||
                         (cbAmazon.isChecked && item.store == "Amazon") ||
@@ -64,17 +69,16 @@ class MainActivity : AppCompatActivity() {
             adapter.updateList(filtered)
         }
 
-        // Search bar listener
+        // Listeners
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(q: String?): Boolean { applyFilters(); return true }
             override fun onQueryTextChange(q: String?): Boolean { applyFilters(); return true }
         })
 
-        // Checkbox listeners
         cbAmazon.setOnCheckedChangeListener { _, _ -> applyFilters() }
         cbMicro.setOnCheckedChangeListener { _, _ -> applyFilters() }
 
-        // Logout button
+        // Logout
         btnLogout.setOnClickListener {
             Firebase.auth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))
